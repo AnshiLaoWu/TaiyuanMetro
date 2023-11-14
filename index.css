@@ -1,0 +1,13 @@
+.top{
+    width:500;
+    height:80;
+    background-color:#B2E0FF;
+    position:absolute;
+    top:10px;
+    left:10px;
+}
+.middle{
+    position:absolute;
+    top:100px;
+    left:10px;
+}
