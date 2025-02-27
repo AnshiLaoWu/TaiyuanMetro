@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+</head>
+<body>
+    <script type="text/javascript">
+        var userAgent = navigator.userAgent;
+        if(userAgent.match(/Android/i)||userAgent.match(/webOS/i)||userAgent.match(/iPhone/i)||userAgent.match(/iPad/i)||userAgent.match(/iPod/i)||userAgent.match(/BlackBerry/i)||userAgent.match(/Windows Phone/i)){
+            window.location.replace("./mobile/index.html");
+        }else{
+            window.location.replace("./main/index.html");
+        }
+    </script>
+</body>
+</html>
