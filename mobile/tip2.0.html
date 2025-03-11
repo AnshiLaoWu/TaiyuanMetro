@@ -16,6 +16,11 @@
             right:20px;
             top:20px;
         }
+        .dropdown{
+            position:fixed;
+            right:15px;
+            bottom:20px;
+        }
         .menubtn{
             background-color:#3498DB;
             color:white;
@@ -33,7 +38,7 @@
         }
         .content{
           display:none;
-          position:absolute;
+          position:relative;
           right:15px;
           bottom:180px;
           height:calc(100vh - 250px);
@@ -301,75 +306,77 @@
     </div><br><br>
     <img src="../Media/尾图.jpg" alt="俺是老吴">
     <img alt="俺是老吴出品" class="watermark" src="../Media/watermark.jpg">
-    <button onclick="menu()" class="menubtn"><img src="../Media/menu.png" style="pointer-events:none;width:100px;"></button>
-    <div class="content" id="content">
-        <a href="#1"><h3>一、太原地铁概述</h3></a>
-        <a href="#2"><h3>二、安全进站乘车</h3></a>
-        <a href="#3"><h3>三、进出闸机验票方式</h3></a>
-        <ul>
-            <li><a href="#3.1"><h4>3-1 单程票</h4></li>
-            <li><a href="#3.2"><h4>3-2 实体刷卡</h4></li>
+    <div class="dropdown">
+        <button onclick="menu()" class="menubtn"><img src="../Media/menu.png" style="pointer-events:none;width:100px;"></button>
+        <div class="content" id="content">
+            <a href="#1"><h3>一、太原地铁概述</h3></a>
+            <a href="#2"><h3>二、安全进站乘车</h3></a>
+            <a href="#3"><h3>三、进出闸机验票方式</h3></a>
+            <ul>
+                <li><a href="#3.1"><h4>3-1 单程票</h4></li>
+                <li><a href="#3.2"><h4>3-2 实体刷卡</h4></li>
+                    <ul>
+                        <li><a href="#3.2.1"><h5>3-2-1 地铁储值卡</h5></li>
+                        <li><a href="#3.2.2"><h5>3-2-2 纪念次卡</h5></li>
+                        <li><a href="#3.2.3"><h5>3-2-3 交通联合一卡通</h5></li>
+                    </ul>
+                <li><a href="#3.3"><h4>3-3 二维码扫描</h4></li>
+                <li><a href="#3.4"><h4>3-4 虚拟交通联合卡</h4></li>
+                <li><a href="#3.5"><h4>3-5 面容扫描</h4></li>
+            </ul>
+            <a href="#4"><h3>四、乘车票价</h3></a>
+            <ul>
+                <li><a href="#4.1"><h4>4-1 计费方式</h4></li>
+                <li><a href="#4.2"><h4>4-2 乘车优惠</h4></li>
+            </ul>
+            <a href="#5"><h3>五、车站线路基本要素信息</h3></a>
+            <ul>
+                <li><a href="#5.1"><h4>5-1 换乘站和非换乘站</h4></li>
+                <li><a href="#5.2"><h4>5-2 地下站、地面站和高架站</h4></li>
+                <li><a href="#5.3"><h4>5-3 终点站和方向信息</h4></li>
+                <li><a href="#5.4"><h4>5-4 站台结构</h4></li>
                 <ul>
-                    <li><a href="#3.2.1"><h5>3-2-1 地铁储值卡</h5></li>
-                    <li><a href="#3.2.2"><h5>3-2-2 纪念次卡</h5></li>
-                    <li><a href="#3.2.3"><h5>3-2-3 交通联合一卡通</h5></li>
+                    <li><a href="#5.4.1"><h5>5-4-1 岛式站台</h5></li>
+                    <li><a href="#5.4.2"><h5>5-4-2 西班牙式站台</h5></li>
+                    <li><a href="#5.4.3"><h5>5-4-3 站台类型汇总</h5></li>
                 </ul>
-            <li><a href="#3.3"><h4>3-3 二维码扫描</h4></li>
-            <li><a href="#3.4"><h4>3-4 虚拟交通联合卡</h4></li>
-            <li><a href="#3.5"><h4>3-5 面容扫描</h4></li>
-        </ul>
-        <a href="#4"><h3>四、乘车票价</h3></a>
-        <ul>
-            <li><a href="#4.1"><h4>4-1 计费方式</h4></li>
-            <li><a href="#4.2"><h4>4-2 乘车优惠</h4></li>
-        </ul>
-        <a href="#5"><h3>五、车站线路基本要素信息</h3></a>
-        <ul>
-            <li><a href="#5.1"><h4>5-1 换乘站和非换乘站</h4></li>
-            <li><a href="#5.2"><h4>5-2 地下站、地面站和高架站</h4></li>
-            <li><a href="#5.3"><h4>5-3 终点站和方向信息</h4></li>
-            <li><a href="#5.4"><h4>5-4 站台结构</h4></li>
-            <ul>
-                <li><a href="#5.4.1"><h5>5-4-1 岛式站台</h5></li>
-                <li><a href="#5.4.2"><h5>5-4-2 西班牙式站台</h5></li>
-                <li><a href="#5.4.3"><h5>5-4-3 站台类型汇总</h5></li>
+                <li><a href="#5.5"><h4>5-5 车站特色</h4></li>
+                <li><a href="#5.6"><h4>5-6 站台门编号</h4></li>
             </ul>
-            <li><a href="#5.5"><h4>5-5 车站特色</h4></li>
-            <li><a href="#5.6"><h4>5-6 站台门编号</h4></li>
-        </ul>
-        <a href="#6"><h3>六、便捷换乘指南</h3></a>
-        <ul>
-            <li><a href="#6.1"><h4>6-1 换乘站简介</h4></li>
-            <li><a href="#6.2"><h4>6-2 大南门站换乘规则与便捷换乘</h4></li>
-        </ul>
-        <a href="#7"><h3>七、便捷出站指南</h3></a>
-        <ul>
-            <li><a href="#7.1"><h4>7-1 地铁1号线便捷出站</h4></li>
-            <li><a href="#7.2"><h4>7-2 地铁2号线便捷出站</h4></li>
-        </ul>
-        <a href="#8"><h3>八、卫生间分布指南</h3></a>
-        <ul>
-            <li><a href="#8.1"><h4>8-1 卫生间及其使用</h4></li>
-            <li><a href="#8.2"><h4>8-2 卫生间位置描述</h4></li>
-            <li><a href="#8.3"><h4>8-3 卫生间分布一览表</h4></li>
-        </ul>
-        <a href="#9"><h3>九、与其他公共交通方式的接驳</h3></a>
-        <ul>
-            <li><a href="#9.1"><h4>9-1 与城市公共交通汽车接驳</h4></li>
-            <li><a href="#9.2"><h4>9-2 与长途客运站接驳</h4></li>
+            <a href="#6"><h3>六、便捷换乘指南</h3></a>
             <ul>
-                <li><a href="#9.2.1"><h5>9-2-1 与长途客运西站的接驳</h5></li>
-                <li><a href="#9.2.2"><h5>9-2-2 与太原汽车站的接驳</h5></li>
+                <li><a href="#6.1"><h4>6-1 换乘站简介</h4></li>
+                <li><a href="#6.2"><h4>6-2 大南门站换乘规则与便捷换乘</h4></li>
             </ul>
-            <li><a href="#9.3"><h4>9-3 与国家客运铁路的接驳</h4></li>
+            <a href="#7"><h3>七、便捷出站指南</h3></a>
             <ul>
-                <li><a href="#9.3.1"><h5>9-3-1 与国铁太原南站接驳</h5></li>
-                <li><a href="#9.3.2"><h5>9-3-2 与国铁太原站接驳</h5></li>
+                <li><a href="#7.1"><h4>7-1 地铁1号线便捷出站</h4></li>
+                <li><a href="#7.2"><h4>7-2 地铁2号线便捷出站</h4></li>
             </ul>
-            <li><a href="#9.4"><h4>9-4 与民航机场接驳</h4></li>
-        </ul>
-        <a href="#10"><h3>十、首末班时刻表</h3></a>
-        <a href="#11"><h3>十一、总结</h3></a>
+            <a href="#8"><h3>八、卫生间分布指南</h3></a>
+            <ul>
+                <li><a href="#8.1"><h4>8-1 卫生间及其使用</h4></li>
+                <li><a href="#8.2"><h4>8-2 卫生间位置描述</h4></li>
+                <li><a href="#8.3"><h4>8-3 卫生间分布一览表</h4></li>
+            </ul>
+            <a href="#9"><h3>九、与其他公共交通方式的接驳</h3></a>
+            <ul>
+                <li><a href="#9.1"><h4>9-1 与城市公共交通汽车接驳</h4></li>
+                <li><a href="#9.2"><h4>9-2 与长途客运站接驳</h4></li>
+                <ul>
+                    <li><a href="#9.2.1"><h5>9-2-1 与长途客运西站的接驳</h5></li>
+                    <li><a href="#9.2.2"><h5>9-2-2 与太原汽车站的接驳</h5></li>
+                </ul>
+                <li><a href="#9.3"><h4>9-3 与国家客运铁路的接驳</h4></li>
+                <ul>
+                    <li><a href="#9.3.1"><h5>9-3-1 与国铁太原南站接驳</h5></li>
+                    <li><a href="#9.3.2"><h5>9-3-2 与国铁太原站接驳</h5></li>
+                </ul>
+                <li><a href="#9.4"><h4>9-4 与民航机场接驳</h4></li>
+            </ul>
+            <a href="#10"><h3>十、首末班时刻表</h3></a>
+            <a href="#11"><h3>十一、总结</h3></a>
+        </div>
     </div>
 </body>
 </html>
