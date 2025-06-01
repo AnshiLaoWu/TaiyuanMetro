@@ -115,36 +115,17 @@ nav ul li a:hover{
     left:10px;
     top:420px;
 }
-.input{
+.icons{
     position:absolute;
     top:40px;
-    right:10px;
+    right:20px;
 }
-#searchInput{
-    width:150px;
-    height:30px;
-    background-color:#acbfe4;
-    border:none;
-    border-radius:5px;
-}
-#searchInput:hover{
-    background-color:#fff;
-}
-#inputButton{
-    width:50px;
-    height:30px;
-    background-color:#acbfe4;
-    color:#000;
-    border:none;
-    border-radius:5px;
-}
-#inputButton:hover{
-    background-color:#fff;
-    color:#000;
-}
-#inputButton:active{
+.icon{
     background-color:#00469b;
-    color:#fff;
+    border:0px;
+}
+.icon:hover{
+    cursor:pointer;
 }
 .bottom{
     background:linear-gradient(rgba(0,0,0,0.8),rgba(0,0,0,1));
