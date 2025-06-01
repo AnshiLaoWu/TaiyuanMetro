@@ -50,6 +50,11 @@ a{
     padding-left:100px;
     font-size:36px;
 }
+.dropdown{
+    position:fixed;
+    right:15px;
+    bottom:20px;
+}
 .mainmenubtn{
     background-color:#3498DB;
     color:white;
@@ -71,7 +76,7 @@ a{
   right:15px;
   bottom:180px;
   background-color:#f1f1f1;
-  min-width:160px;
+  min-width:300px;
   box-shadow:0px 8px 16px 0px rgba(0,0,0,0.2);
   z-index:1;
 }
@@ -101,16 +106,26 @@ a{
   right:300px;
   bottom:130px;
   background-color:#f1f1f1;
-  min-width:160px;
+  min-width:200px;
   box-shadow:0px 8px 16px 0px rgba(0,0,0,0.2);
   z-index:2;
 }
-.mainmenu a,.menu1 a,.menu2 a,.menu3 a{
+.menu4{
+  display:none;
+  position:absolute;
+  right:300px;
+  bottom:30px;
+  background-color:#f1f1f1;
+  min-width:200px;
+  box-shadow:0px 8px 16px 0px rgba(0,0,0,0.2);
+  z-index:2;
+}
+.mainmenu a,.menu1 a,.menu2 a,.menu3 a,.menu4 a{
   color:black;
   padding:12px 16px;
   font-size:36px;
   text-decoration:none;
   display:block;
 }
-.mainmenu a:hover,.menu1 a:hover,.menu2 a:hover,.menu3 a:hover{background-color:#ddd;}
+.mainmenu a:hover,.menu1 a:hover,.menu2 a:hover,.menu3 a:hover,.menu4:hover{background-color:#ddd;}
 .show{display:block;}
