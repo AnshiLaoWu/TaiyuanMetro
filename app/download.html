@@ -9,17 +9,83 @@
             background-size:cover;
             background-attachment:fixed;
         }
+        a{
+            color:#3498db;
+            text-decoration:none;
+        }
+        a:hover{
+            color:#005497;
+        }
+        .download_link{
+            width:600px;
+            position:absolute;
+            left:calc(100vw / 2 - 300px);
+        }
+        button{
+            width:90px;
+            height:90px;
+            border-radius:90px;
+            border:0px;
+            background-color:#3498db;
+            color:#ffffff;
+        }
+        button:hover{
+            background-color:#45a9ec;
+        }
+        .window{
+            width:110px;
+            border-radius:10px;
+            background-color:#ffffff;
+            position:absolute;
+            top:90px;
+            visibility:hidden;
+        }
+        #a:hover~#aa,#b:hover~#bb,#c:hover~#cc,#d:hover~#dd,#e:hover~#ee,#f:hover~#ff,
+        #aa:hover,#bb:hover,#cc:hover,#dd:hover,#ee:hover,#ff:hover{
+            visibility:visible;
+        }
     </style>
 </head>
 <body>
-    <h1>下载应用程序</h1>
-    <h2>Release v1.0.0.1 (2025/05/23)</h2>
-    <ul>
-        <li><a href="./windows_v1.0.0.1.exe">适用于 Microsoft® Windows™ x86（包含32位和64位）的免安装应用程序</a></li>
-        <li><a href="./windows_v1.0.0.1_installer.exe">适用于 Microsoft® Windows™ x86（包含32位和64位）的安装程序</a></li>
-        <li><a href="./debian_linux_v1.0.0.1">适用于 Debian Linux x86（包含32位和64位）的免安装应用程序</a></li>
-        <li><a href="./android_v1.0.0.1.apk">适用于 Android 的应用程序包</a></li>
-        <li><a href="./ios_v1.0.0.1.ipa">适用于 iOS 和 iPadOS 的应用程序包</a></li>
-    </ul>
+    <h1 style="text-align:center;">下载应用程序</h1>
+    <p style="text-align:center;font-size:20px;">推荐使用应用程序，以获得更为便捷的体验</p>
+    <div class="download_link">
+        <button id="a"><img src="../Media/windows.svg" /><br><span>Windows</span></button>
+        <button id="b"><img src="../Media/apple.svg" /><br><span>macOS</span></button>
+        <button id="c"><img src="../Media/linux.svg" /><br><span>Linux</span></button>
+        <button id="d"><img src="../Media/android.svg" /><br><span>Android</span></button>
+        <button id="e"><img src="../Media/apple.svg" /><br><span>iOS</span></button>
+        <button id="f"><img src="../Media/hmos.svg" /><br><span>HarmonyOS</span></button>
+        <div class="window" id="aa" style="left:0px;">
+            <h4>.exe格式</h4>
+            <a href="./TaiyuanMetro_0.0.1_x64-setup.exe">x86_64</a><br>
+            <a href="./TaiyuanMetro_0.0.1_arm64-setup.exe">Arm64</a><br>
+            <h4>.msi格式</h4>
+            <a href="./TaiyuanMetro_0.0.1_x64_en-US.msi">x86_64</a><br>
+            <a href="./TaiyuanMetro_0.0.1_arm64_en-US.msi">Arm64</a><br>
+        </div>
+        <div class="window" id="bb" style="left:85px;">
+            <a href="./TaiyuanMetro_0.0.1_x64-setup.exe">Intel x64</a><br>
+            <a href="./TaiyuanMetro_0.0.1_arm64-setup.exe">Apple Silicon</a><br>
+        </div>
+        <div class="window" id="cc" style="left:190px;">
+            <a href="./TaiyuanMetro-0.0.1-1.x86_64.rpm">.rpm</a><br>
+            <a href="./TaiyuanMetro_0.0.1_amd64.AppImage">.AppImage</a><br>
+            <a href="./TaiyuanMetro_0.0.1_amd64.deb">.deb</a><br>
+        </div>
+        <div class="window" id="dd" style="left:285px;">
+            <a href="./TaiyuanMetro-v0.0.1.apk">.apk</a>
+            <p>或扫描二维码</p>
+            <img src="../Media/apk.png" width="100px" />
+        </div>
+        <div class="window" id="ee" style="left:380px;">
+            <a href="./TaiyuanMetro-0.0.1.ipa">.ipa</a>
+            <p>或扫描二维码</p>
+            <img src="../Media/ipa.png" width="100px" />
+        </div>
+        <div class="window" id="ff" style="left:475px;">
+            <p>暂未支持</p>
+        </div>
+    </div>
 </body>
 </html>
