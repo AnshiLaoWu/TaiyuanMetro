@@ -1,96 +1,660 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="zh-CN">
 <head>
     <meta charset="UTF-8">
-    <title>下载应用程序|俺是老吴·太原地铁</title>
-    <style type="text/css">
-        body{
-            background-image:url(../Media/bg.png);
-            background-size:cover;
-            background-attachment:fixed;
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes, viewport-fit=cover">
+    <title>下载应用程序 | 俺是老吴 · 太原地铁</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
         }
-        a{
-            color:#3498db;
-            text-decoration:none;
+
+        body {
+            background-image: url('../Media/bg.png');
+            background-size: cover;
+            background-attachment: fixed;
+            background-position: center center;
+            font-family: 'Segoe UI', 'Roboto', system-ui, -apple-system, 'BlinkMacSystemFont', 'Helvetica Neue', sans-serif;
+            line-height: 1.5;
+            color: #1e2a3e;
+            padding: 2rem 1.5rem;
+            position: relative;
         }
-        a:hover{
-            color:#005497;
+
+        /* 主容器 */
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 2;
         }
-        .download_link{
-            width:600px;
-            position:absolute;
-            left:calc(100vw / 2 - 300px);
+
+        /* 头部区域 */
+        .hero {
+            text-align: center;
+            margin-bottom: 3rem;
+            animation: fadeInUp 0.6s ease-out;
         }
-        button{
-            width:90px;
-            height:90px;
-            border-radius:90px;
-            border:0px;
-            background-color:#3498db;
-            color:#ffffff;
+
+        .hero h1 {
+            font-size: 2.8rem;
+            background: #000;
+            background-clip: text;
+            -webkit-background-clip: text;
+            color: transparent;
+            letter-spacing: -0.5px;
+            margin-bottom: 0.5rem;
+            text-shadow: 0 2px 5px rgba(0,0,0,0.05);
         }
-        button:hover{
-            background-color:#45a9ec;
+
+        .hero .badge {
+            display: inline-block;
+            background: rgba(44, 125, 160, 0.15);
+            backdrop-filter: blur(4px);
+            border-radius: 40px;
+            padding: 0.3rem 1rem;
+            font-size: 0.85rem;
+            color: #1e5a78;
+            margin-top: 0.5rem;
+            font-weight: 500;
         }
-        .window{
-            width:110px;
-            border-radius:10px;
-            background-color:#ffffff;
-            position:absolute;
-            top:90px;
-            visibility:hidden;
+
+        .hero p {
+            font-size: 1.2rem;
+            color:#000;
+            margin-top: 0.75rem;
+            font-weight: 500;
+            background: rgba(255,255,240,0.6);
+            display: inline-block;
+            padding: 0.2rem 1.2rem;
+            border-radius: 60px;
+            backdrop-filter: blur(2px);
         }
-        #a:hover~#aa,#b:hover~#bb,#c:hover~#cc,#d:hover~#dd,#e:hover~#ee,#f:hover~#ff,
-        #aa:hover,#bb:hover,#cc:hover,#dd:hover,#ee:hover,#ff:hover{
-            visibility:visible;
+
+        /* 网格卡片布局 */
+        .platform-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+            gap: 1.8rem;
+            margin: 2rem 0 3rem;
+        }
+
+        /* 卡片样式 */
+        .card {
+            background: rgba(52, 152, 219, 0.4);
+            backdrop-filter: blur(8px);
+            border-radius: 2rem;
+            box-shadow: 0 20px 35px -12px rgba(0, 0, 0, 0.2), 0 1px 2px rgba(0,0,0,0.05);
+            transition: transform 0.25s ease, box-shadow 0.3s ease;
+            overflow: hidden;
+            border: 1px solid rgba(255,255,255,0.5);
+            position: relative;
+        }
+
+        .card:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 28px 40px -16px rgba(0, 0, 0, 0.25);
+            background: rgba(52, 152, 219, 0.45);
+        }
+
+        /* 推荐卡片增加光效边框 */
+        .card.recommended-card {
+            border: 2px solid #f7b731;
+            box-shadow: 0 0 0 1px rgba(247, 183, 49, 0.4), 0 20px 35px -12px rgba(0, 0, 0, 0.3);
+            background: rgba(52, 152, 219, 0.55);
+        }
+
+        /* 卡片头部 */
+        .card-header {
+            padding: 1.6rem 1.5rem 0.8rem 1.5rem;
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            border-bottom: 2px solid rgba(52, 152, 219, 0.2);
+            position: relative;
+        }
+
+        .card-header img {
+            width: 52px;
+            height: 52px;
+            filter: drop-shadow(0 4px 6px rgba(0,0,0,0.1));
+            transition: transform 0.2s;
+        }
+
+        .card:hover .card-header img {
+            transform: scale(1.02);
+        }
+
+        .card-header h2 {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: #1f4e6e;
+            letter-spacing: -0.3px;
+        }
+
+        /* 推荐角标样式 */
+        .recommend-tag {
+            position: absolute;
+            right: 1.2rem;
+            top: 1.2rem;
+            background: linear-gradient(135deg, #f5b042, #f39c12);
+            color: white;
+            font-size: 0.7rem;
+            font-weight: bold;
+            padding: 0.25rem 0.7rem;
+            border-radius: 40px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+            backdrop-filter: blur(2px);
+            letter-spacing: 0.5px;
+            z-index: 3;
+            display: inline-flex;
+            align-items: center;
+            gap: 4px;
+            white-space: nowrap;
+        }
+
+        /* 下载内容区域 */
+        .download-options {
+            padding: 1.3rem 1.5rem 1.8rem;
+        }
+
+        .section-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .section-group:last-child {
+            margin-bottom: 0;
+        }
+
+        .group-title {
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            font-weight: 700;
+            letter-spacing: 0.5px;
+            color: #2c7da0;
+            margin-bottom: 0.75rem;
+            border-left: 3px solid #3498db;
+            padding-left: 10px;
+            background: linear-gradient(90deg, rgba(52,152,219,0.08), transparent);
+        }
+
+        .link-list {
+            display: flex;
+            flex-direction: column;
+            gap: 0.6rem;
+        }
+
+        .download-item {
+            display: flex;
+            align-items: baseline;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            background: rgba(245, 250, 255, 0.6);
+            padding: 0.5rem 0.9rem;
+            border-radius: 1.2rem;
+            transition: all 0.2s;
+            border: 1px solid rgba(52,152,219,0.15);
+        }
+
+        .download-item:hover {
+            background: #ffffff;
+            border-color: #3498db;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.02);
+        }
+
+        .file-info {
+            font-weight: 500;
+            font-size: 0.9rem;
+            color: #1e4663;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            flex-wrap: wrap;
+        }
+
+        .arch-badge {
+            background: #eef2f5;
+            padding: 0.2rem 0.6rem;
+            border-radius: 30px;
+            font-size: 0.7rem;
+            font-weight: 600;
+            color: #2c7da0;
+            font-family: monospace;
+        }
+
+        .link-btn {
+            background: #3498db10;
+            color: #1f6392;
+            text-decoration: none;
+            font-size: 0.85rem;
+            font-weight: 600;
+            padding: 0.3rem 0.9rem;
+            border-radius: 30px;
+            transition: all 0.2s;
+            border: 1px solid #3498db30;
+            white-space: nowrap;
+        }
+
+        .link-btn:hover {
+            background: #3498db;
+            color: white;
+            border-color: #3498db;
+            box-shadow: 0 2px 8px rgba(52,152,219,0.3);
+        }
+
+        .small-note {
+            font-size: 0.7rem;
+            color: #c44536;
+            background: #fff1f0;
+            padding: 0.2rem 0.6rem;
+            border-radius: 20px;
+            margin-left: 0.5rem;
+            font-weight: 500;
+        }
+
+        .password-hint {
+            background: #fef5e7;
+            color: #b45f1b;
+            font-size: 0.7rem;
+            padding: 0.15rem 0.5rem;
+            border-radius: 16px;
+            margin-left: 8px;
+            font-weight: 500;
+        }
+
+        .external-link {
+            background: #eef2fa;
+        }
+
+        hr {
+            margin: 0.8rem 0;
+            border: 0;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, #3498db30, transparent);
+        }
+
+        /* 页脚 */
+        .footer-note {
+            text-align: center;
+            margin-top: 3rem;
+            padding: 1.5rem;
+            background: rgba(255,255,245,0.7);
+            backdrop-filter: blur(4px);
+            border-radius: 2rem;
+            font-size: 0.85rem;
+            color: #2c5a74;
+            border: 1px solid rgba(255,255,255,0.6);
+        }
+
+        .footer-note a {
+            color: #1f6392;
+            text-decoration: none;
+            font-weight: 500;
+            border-bottom: 1px dotted;
+        }
+
+        .footer-note a:hover {
+            color: #0e3e5c;
+        }
+
+        /* 动画 */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* 响应式微调 */
+        @media (max-width: 780px) {
+            body {
+                padding: 1.2rem;
+            }
+            .hero h1 {
+                font-size: 2rem;
+            }
+            .platform-grid {
+                gap: 1.2rem;
+                grid-template-columns: 1fr;
+            }
+            .card-header h2 {
+                font-size: 1.5rem;
+            }
+            .download-item {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 8px;
+            }
+            .link-btn {
+                align-self: flex-start;
+                margin-top: 4px;
+            }
+            .file-info {
+                width: 100%;
+            }
+            .recommend-tag {
+                font-size: 0.6rem;
+                padding: 0.2rem 0.5rem;
+                top: 0.8rem;
+                right: 0.8rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .group-title {
+                font-size: 0.75rem;
+            }
+            .card-header img {
+                width: 42px;
+                height: 42px;
+            }
+        }
+
+        /* 自定义滚动条 */
+        ::-webkit-scrollbar {
+            width: 8px;
+            background: #e9ecef;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #3498db;
+            border-radius: 10px;
         }
     </style>
 </head>
 <body>
-    <h1 style="text-align:center;">下载应用程序</h1>
-    <p style="text-align:center;font-size:20px;">推荐使用应用程序，以获得更为便捷的体验</p>
-    <div class="download_link">
-        <button id="a"><img src="../Media/windows.svg" /><br><span>Windows</span></button>
-        <button id="b"><img src="../Media/apple.svg" /><br><span>macOS</span></button>
-        <button id="c"><img src="../Media/linux.svg" /><br><span>Linux</span></button>
-        <button id="d"><img src="../Media/android.svg" /><br><span>Android</span></button>
-        <button id="e"><img src="../Media/apple.svg" /><br><span>iOS</span></button>
-        <button id="f"><img src="../Media/hmos.svg" /><br><span>HarmonyOS</span></button>
-        <div class="window" id="aa" style="left:0px;">
-            <p>.exe格式</p>
-            <a href="./TaiyuanMetro_1.0.1_x64-setup.exe">x86_64</a><br>
-            <a href="./TaiyuanMetro_1.0.1_arm64-setup.exe">Arm64</a><br>
-            <p>.msi格式</p>
-            <a href="./TaiyuanMetro_0.0.1_x64_en-US.msi">x86_64</a><br>
-            <a href="./TaiyuanMetro_0.0.1_arm64_en-US.msi">Arm64</a><br>
+<div class="container">
+    <div class="hero">
+        <h1>下载应用程序</h1>
+        <p>推荐使用应用程序，以获得更为便捷的体验</p>
+    </div>
+
+    <div class="platform-grid" id="platformGrid">
+        <!-- Windows 卡片 -->
+        <div class="card" data-os="windows">
+            <div class="card-header">
+                <img src="../Media/windows.svg" alt="Windows" loading="lazy">
+                <h2>Windows</h2>
+            </div>
+            <div class="download-options">
+                <div class="section-group">
+                    <div class="group-title">可执行程序 (.exe)</div>
+                    <div class="link-list">
+                        <div class="download-item">
+                            <span class="file-info">TaiyuanMetro_1.0.1_x64-setup.exe <span class="arch-badge">x86_64</span></span>
+                            <a class="link-btn" href="./TaiyuanMetro_1.0.1_x64-setup.exe">下载</a>
+                        </div>
+                        <div class="download-item">
+                            <span class="file-info">TaiyuanMetro_1.0.1_arm64-setup.exe <span class="arch-badge">Arm64</span></span>
+                            <a class="link-btn" href="./TaiyuanMetro_1.0.1_arm64-setup.exe">下载</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="section-group">
+                    <div class="group-title">MSI安装包 (.msi)</div>
+                    <div class="link-list">
+                        <div class="download-item">
+                            <span class="file-info">TaiyuanMetro_0.0.1_x64_en-US.msi <span class="arch-badge">x86_64</span></span>
+                            <a class="link-btn" href="./TaiyuanMetro_0.0.1_x64_en-US.msi">下载</a>
+                        </div>
+                        <div class="download-item">
+                            <span class="file-info">TaiyuanMetro_0.0.1_arm64_en-US.msi <span class="arch-badge">Arm64</span></span>
+                            <a class="link-btn" href="./TaiyuanMetro_0.0.1_arm64_en-US.msi">下载</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
-        <div class="window" id="bb" style="left:85px;">
-            <a href="./TaiyuanMetro_1.0.1_x64.dmg">Intel x64</a><br>
-            <a href="./TaiyuanMetro_1.0.1_aarch64.dmg">Apple Silicon</a><br>
+
+        <!-- macOS 卡片 -->
+        <div class="card" data-os="macos">
+            <div class="card-header">
+                <img src="../Media/apple.svg" alt="macOS" loading="lazy">
+                <h2>macOS</h2>
+            </div>
+            <div class="download-options">
+                <div class="section-group">
+                    <div class="group-title">磁盘映像 (.dmg)</div>
+                    <div class="link-list">
+                        <div class="download-item">
+                            <span class="file-info">TaiyuanMetro_1.0.1_x64.dmg <span class="arch-badge">Intel x64</span></span>
+                            <a class="link-btn" href="./TaiyuanMetro_1.0.1_x64.dmg">下载</a>
+                        </div>
+                        <div class="download-item">
+                            <span class="file-info">TaiyuanMetro_1.0.1_aarch64.dmg <span class="arch-badge">Apple Silicon</span></span>
+                            <a class="link-btn" href="./TaiyuanMetro_1.0.1_aarch64.dmg">下载</a>
+                        </div>
+                    </div>                    
+                </div>
+                <div class="section-group">
+                    <div class="group-title">安装程序 (.pkg)</div>
+                    <div class="link-list">
+                        <div class="download-item">
+                            <span class="file-info">TaiyuanMetro_1.0.1_x64.pkg <span class="arch-badge">Intel x64</span></span>
+                            <a class="link-btn" href="./TaiyuanMetro_1.0.1_x64.pkg">下载</a>
+                        </div>
+                        <div class="download-item">
+                            <span class="file-info">TaiyuanMetro_1.0.1_aarch64.pkg <span class="arch-badge">Apple Silicon</span></span>
+                            <a class="link-btn" href="./TaiyuanMetro_1.0.1_aarch64.pkg">下载</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
-        <div class="window" id="cc" style="left:190px;">
-            <p>安装包</p>
-            <a href="./TaiyuanMetro-0.0.1-1.x86_64.rpm">.rpm</a><br>
-            <a href="https://wwbtd.lanzoul.com/ikiN63lua8qj">.AppImage（密码:7f2o）</a><br>
-            <a href="./TaiyuanMetro_1.0.1_amd64.deb">.deb</a><br>
-            <p>压缩包</p>
-            <a href="./TaiyuanMetro_1.0.1_x64.app.tar.gz">x64</a><br>
-            <a href="./TaiyuanMetro_1.0.1_aarch64.app.tar.gz">Arm64</a><br>
+
+        <!-- Linux 卡片 -->
+        <div class="card" data-os="linux">
+            <div class="card-header">
+                <img src="../Media/linux.svg" alt="Linux" loading="lazy">
+                <h2>Linux</h2>
+            </div>
+            <div class="download-options">
+                <div class="section-group">
+                    <div class="group-title">安装包</div>
+                    <div class="link-list">
+                        <div class="download-item">
+                            <span class="file-info">TaiyuanMetro-0.0.1-1.x86_64.rpm <span class="arch-badge">RPM</span></span>
+                            <a class="link-btn" href="./TaiyuanMetro-0.0.1-1.x86_64.rpm">下载</a>
+                        </div>
+                        <div class="download-item">
+                            <span class="file-info">TaiyuanMetro_1.0.1_amd64.deb <span class="arch-badge">DEB</span></span>
+                            <a class="link-btn" href="./TaiyuanMetro_1.0.1_amd64.deb">下载</a>
+                        </div>
+                        <div class="download-item">
+                            <span class="file-info">TaiyuanMetro.AppImage <span class="arch-badge">便携版</span>
+                                <span class="password-hint">密码: 7f2o</span>
+                            </span>
+                            <a class="link-btn external-link" href="https://wwbtd.lanzoul.com/ikiN63lua8qj" target="_blank" rel="noopener noreferrer">蓝奏云下载</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="section-group">
+                    <div class="group-title">压缩包 (.tar.gz)</div>
+                    <div class="link-list">
+                        <div class="download-item">
+                            <span class="file-info">TaiyuanMetro_1.0.1_x64.app.tar.gz <span class="arch-badge">x64</span></span>
+                            <a class="link-btn" href="./TaiyuanMetro_1.0.1_x64.app.tar.gz">下载</a>
+                        </div>
+                        <div class="download-item">
+                            <span class="file-info">TaiyuanMetro_1.0.1_aarch64.app.tar.gz <span class="arch-badge">Arm64</span></span>
+                            <a class="link-btn" href="./TaiyuanMetro_1.0.1_aarch64.app.tar.gz">下载</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
-        <div class="window" id="dd" style="left:285px;">
-            <a href="./TaiyuanMetro_1.0.1.apk">.apk</a>
-            <!-- <p>或扫描二维码</p>
-            <img src="../Media/apk.png" width="100px" /> -->
+
+        <!-- Android 卡片 -->
+        <div class="card" data-os="android">
+            <div class="card-header">
+                <img src="../Media/android.svg" alt="Android" loading="lazy">
+                <h2>Android</h2>
+            </div>
+            <div class="download-options">
+                <div class="section-group">
+                    <div class="group-title">安装包</div>
+                    <div class="link-list">
+                        <div class="download-item">
+                            <span class="file-info">TaiyuanMetro_1.0.1.apk</span>
+                            <a class="link-btn" href="./TaiyuanMetro_1.0.1.apk">下载</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
-        <div class="window" id="ee" style="left:380px;">
-            <a href="./Taiyuanmetro_1.0.1.mobileconfig">描述文件（推荐）</a><br>
-            <a href="./TaiyuanMetro_1.0.1.ipa">.ipa（需要签名）</a>
-            <!-- <p>或扫描二维码</p>
-            <img src="../Media/ipa.png" width="100px" /> -->
+
+        <!-- iOS 卡片 -->
+        <div class="card" data-os="ios">
+            <div class="card-header">
+                <img src="../Media/apple.svg" alt="iOS" loading="lazy">
+                <h2>iOS</h2>
+            </div>
+            <div class="download-options">
+                <div class="section-group">
+                    <div class="group-title">描述文件</div>
+                    <div class="link-list">
+                        <div class="download-item">
+                            <span class="file-info">Taiyuanmetro.mobileconfig <span class="arch-badge">免签名</span></span>
+                            <a class="link-btn" href="./Taiyuanmetro_1.0.1.mobileconfig">安装</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="section-group">
+                    <div class="group-title">安装包 (.ipa)</div>
+                    <div class="link-list">
+                        <div class="download-item">
+                            <span class="file-info">TaiyuanMetro_1.0.1.ipa <span class="arch-badge">需要签名</span></span>
+                            <a class="link-btn" href="./TaiyuanMetro_1.0.1.ipa">下载</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
-        <div class="window" id="ff" style="left:475px;">
-            <a href="./TaiyuanMetro_1.0.1.hap">.hap</a>
+
+        <!-- HarmonyOS 鸿蒙卡片 -->
+        <div class="card" data-os="harmonyos">
+            <div class="card-header">
+                <img src="../Media/hmos.svg" alt="HarmonyOS" loading="lazy">
+                <h2>HarmonyOS</h2>
+            </div>
+            <div class="download-options">
+                <div class="section-group">
+                    <div class="group-title">应用包 (.hap)</div>
+                    <div class="link-list">
+                        <div class="download-item">
+                            <span class="file-info">TaiyuanMetro_1.0.1.hap <span class="arch-badge">需要签名</span></span>
+                            <a class="link-btn" href="./TaiyuanMetro_1.0.1.hap">下载</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
+
+    <div class="footer-note">
+        <span>声明：本页面使用了AI工具辅助生成</span>
+    </div>
+</div>
+
+<script>
+    (function() {
+        // 检测当前操作系统（优先匹配移动/桌面，返回统一标识）
+        function detectOS() {
+            const ua = navigator.userAgent.toLowerCase();
+            // 鸿蒙检测 (HarmonyOS)
+            if (ua.includes('harmonyos') || ua.includes('hmos') || ua.includes('openharmony')) {
+                return 'harmonyos';
+            }
+            // Android (排除鸿蒙)
+            if (ua.includes('android')) {
+                return 'android';
+            }
+            // iOS / iPadOS
+            if (/iphone|ipad|ipod/.test(ua)) {
+                return 'ios';
+            }
+            // Windows
+            if (ua.includes('windows nt') || ua.includes('win32') || ua.includes('win64')) {
+                return 'windows';
+            }
+            // macOS (Mac)
+            if (ua.includes('macintosh') || ua.includes('mac os x')) {
+                // 某些 iPad 在 iPadOS 13+ UA 中会伪装成 Mac，但包含 'mac' 且有触摸点? 用更可靠方式：排除移动端已处理
+                return 'macos';
+            }
+            // Linux (不包括android)
+            if (ua.includes('linux') && !ua.includes('android')) {
+                return 'linux';
+            }
+            // 默认返回 null
+            return null;
+        }
+
+        const currentOS = detectOS();
+        const grid = document.getElementById('platformGrid');
+        if (!grid || !currentOS) {
+            // 无法识别时不做任何改动
+            return;
+        }
+
+        // 获取所有卡片
+        const cards = Array.from(grid.querySelectorAll('.card'));
+        // 根据 data-os 属性匹配目标卡片
+        let targetCard = null;
+        for (let card of cards) {
+            const osAttr = card.getAttribute('data-os');
+            if (osAttr === currentOS) {
+                targetCard = card;
+                break;
+            }
+        }
+
+        if (!targetCard) return;
+
+        // 1. 将目标卡片移动到第一个位置（置顶）
+        if (cards.indexOf(targetCard) !== 0) {
+            grid.insertBefore(targetCard, grid.firstChild);
+        }
+
+        // 2. 移除可能存在的旧推荐标记 (防止重复添加)
+        const existingTags = document.querySelectorAll('.recommend-tag');
+        existingTags.forEach(tag => tag.remove());
+        // 同时移除其他卡片的 recommended-card 类
+        document.querySelectorAll('.card.recommended-card').forEach(c => {
+            c.classList.remove('recommended-card');
+        });
+
+        // 3. 为推荐卡片添加醒目样式和推荐角标
+        targetCard.classList.add('recommended-card');
+        
+        // 动态创建角标元素
+        const tagSpan = document.createElement('span');
+        tagSpan.className = 'recommend-tag';
+        // 根据不同系统展示不同文案
+        let tagText = '当前系统';
+        // if (currentOS === 'windows') tagText = '当前系统 · Windows';
+        // else if (currentOS === 'macos') tagText = '当前系统 · macOS';
+        // else if (currentOS === 'linux') tagText = '当前系统 · Linux';
+        // else if (currentOS === 'android') tagText = '当前系统 · Android';
+        // else if (currentOS === 'ios') tagText = '当前系统 · iOS';
+        // else if (currentOS === 'harmonyos') tagText = '当前系统 · HarmonyOS';
+        tagSpan.innerHTML = `${tagText}`;
+        
+        // 防止重复插入，先查找.card-header内是否已有推荐标记
+        const header = targetCard.querySelector('.card-header');
+        if (header && !header.querySelector('.recommend-tag')) {
+            header.style.position = 'relative';
+            header.appendChild(tagSpan);
+        }
+
+        // 可选：在控制台输出检测结果，方便调试（不干扰用户）
+        // console.log(`[太原地铁] 已检测到系统: ${currentOS}, 已将对应下载卡片置顶并添加推荐标识`);
+    })();
+</script>
 </body>
 </html>
