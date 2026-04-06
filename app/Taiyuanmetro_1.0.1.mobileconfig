@@ -2630,11 +2630,11 @@
 			<key>PayloadDisplayName</key>
 			<string>Web Clip</string>
 			<key>PayloadIdentifier</key>
-			<string>com.apple.webClip.managed.395F345B-893B-430B-9AF5-AB61D357410A</string>
+			<string>com.apple.webClip.managed.4D339065-BE3F-4E27-8257-5BD919F21C3A</string>
 			<key>PayloadType</key>
 			<string>com.apple.webClip.managed</string>
 			<key>PayloadUUID</key>
-			<string>395F345B-893B-430B-9AF5-AB61D357410A</string>
+			<string>4D339065-BE3F-4E27-8257-5BD919F21C3A</string>
 			<key>PayloadVersion</key>
 			<integer>1</integer>
 			<key>Precomposed</key>
@@ -2644,7 +2644,7 @@
 		</dict>
 	</array>
 	<key>PayloadDisplayName</key>
-	<string>未命名</string>
+	<string>太原地铁便民服务</string>
 	<key>PayloadIdentifier</key>
 	<string>WuzetongdeMac.C622D816-A01B-4DB8-9D26-E21255F2A9F5</string>
 	<key>PayloadRemovalDisallowed</key>
@@ -2652,7 +2652,7 @@
 	<key>PayloadType</key>
 	<string>Configuration</string>
 	<key>PayloadUUID</key>
-	<string>B5E55456-2251-4209-96D5-7AA838CE37EC</string>
+	<string>424D0953-8949-4422-8B98-CB032A02594B</string>
 	<key>PayloadVersion</key>
 	<integer>1</integer>
 </dict>
