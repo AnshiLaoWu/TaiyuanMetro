@@ -1,0 +1,15 @@
+{
+  "name": "太原地铁便民服务",
+  "short_name": "俺是老吴·太原地铁",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#ffffff",
+  "theme_color": "#000000",
+  "icons": [
+    {
+      "src": "../app/logo.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ]
+}
